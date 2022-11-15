@@ -21,6 +21,7 @@ public class EmployeeService {
 
     public EmployeeResDto createEmployee(CreateEmployeeDto createEmployeeDto) {
         Employee newEmployee = Employee.builder().name(createEmployeeDto.getName())
+                .age(createEmployeeDto.getAge())
                .build();
         return mapEmployeeToEmployeeResDto(employeeRepository.save(newEmployee));
     }
@@ -41,8 +42,9 @@ public class EmployeeService {
         EmployeeResDto employeeResDto = new EmployeeResDto();
         employeeResDto.setId(employee.getId());
         employeeResDto.setName(employee.getName());
+        employeeResDto.setAge(employee.getAge());
         if (employee.getCompany() != null) {
-            employeeResDto.setCompany(new EmployeeCompanyDto(employee.getCompany().getId(), employee.getCompany().getName()));
+            employeeResDto.setCompany(new EmployeeCompanyDto(employee.getCompany().getId(), employee.getCompany().getName(), employee.getCompany().getAddress()));
         }
         return employeeResDto;
     }

@@ -23,6 +23,8 @@ public class Company {
 
     private String name;
 
+    private String address;
+
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Employee> employee;
 }

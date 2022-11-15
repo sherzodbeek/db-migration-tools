@@ -1,6 +1,6 @@
 package com.jmp.migration.dbmigrationtools.dto;
 
-import com.jmp.migration.dbmigrationtools.entity.Employee;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +12,14 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CompanyResDto {
 
     Long id;
 
     private String name;
+
+    private String address;
 
     List<CompanyEmployeeDto> employees;
 }
