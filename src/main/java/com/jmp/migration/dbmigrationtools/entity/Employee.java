@@ -22,6 +22,8 @@ public class Employee {
 
     private String name;
 
+    private Integer age;
+
     @ManyToOne
     private Company company;
 }

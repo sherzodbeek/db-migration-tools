@@ -28,6 +28,7 @@ public class CompanyService {
 
     public CompanyResDto createCompany(CreateCompanyDto createCompanyDto) {
         Company newCompany = Company.builder().name(createCompanyDto.getName())
+                .address(createCompanyDto.getAddress())
                 .build();
         return mapCompanyToCompanyResDto(companyRepository.save(newCompany));
     }
@@ -60,9 +61,10 @@ public class CompanyService {
         CompanyResDto companyResDto = new CompanyResDto();
         companyResDto.setId(company.getId());
         companyResDto.setName(company.getName());
+        companyResDto.setAddress(company.getAddress());
         if (company.getEmployee() != null) {
             companyResDto.setEmployees(company.getEmployee().stream()
-                    .map(employee -> new CompanyEmployeeDto(employee.getId(), employee.getName()))
+                    .map(employee -> new CompanyEmployeeDto(employee.getId(), employee.getName(), employee.getAge()))
                     .collect(Collectors.toList()));
         } else {
             companyResDto.setEmployees(new ArrayList<>());

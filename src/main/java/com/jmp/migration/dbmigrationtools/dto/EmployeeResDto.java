@@ -17,5 +17,7 @@ public class EmployeeResDto {
 
     private String name;
 
+    private Integer age;
+
     private EmployeeCompanyDto company;
 }
